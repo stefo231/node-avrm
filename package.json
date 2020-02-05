@@ -11,5 +11,14 @@
   "license": "ISC",
   "dependencies": {
     "node-fetch": "^2.6.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stefo231/node-avrm.git"
+  },
+  "bugs": {
+    "url": "https://github.com/stefo231/node-avrm/issues"
+  },
+  "homepage": "https://github.com/stefo231/node-avrm#readme"
 }

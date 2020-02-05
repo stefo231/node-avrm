@@ -63,7 +63,7 @@ write('file.txt', 'some content')
      return read('file.txt')
     })
     .then(data =>{
-        console.log('file.text data');
+        console.log('file.txt');
         console.log(data)
     })
     .catch(err => {
