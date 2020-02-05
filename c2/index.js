@@ -71,9 +71,9 @@ write('file.txt', 'some content')
     })
 
 
-    let ime = 'stefan';
+    let ime = 'stefan zdravkov';
     let poz = `zdravo ${ime}`
 
 
     console.log(poz.length);
-    console.log(poz.split('a'))
+    console.log(poz.split(' '))
