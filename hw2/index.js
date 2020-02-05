@@ -34,10 +34,9 @@ read('lorem.txt')
         }
     }
     console.log(`${wordsBigger} of these words has length bigger then "7", ${wordsSmaller} less then "7" and ${wordsEven} are even with "7"`);
+
+
 })
 .catch(err => {
     console.log('an error has occured while writing to file');
 })
-
-
-
