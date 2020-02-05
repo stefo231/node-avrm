@@ -18,21 +18,7 @@ fs.writeFile('message.txt', 'Hello Node.js ', (err) => {
 })
 */
 
-/*
-let newPromise = new Promise((resolve, reject) => {
-   
-})
-newPromise.then(
-    resolve =>{
-        fs.writeFile('message.txt', 'Hello Node')
-        .then(() => console.log('successfuly added'))
-        .catch(err => console.log('an error has occured'))
-    },
-    reject => {
-        console.log('Houston we have a problem')
-     }
-);
-*/
+// to avoid callback hell we work with promise
 
 const write = ( file, content )=>{
     return new Promise((success, fail) => {
