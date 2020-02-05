@@ -6,4 +6,4 @@ kolku zborovi immat > 7 karakteri?
 kolku zborovi immat < 7 karakteri?
 kolku zborovi immat == 7 karakteri?
 
-koj zbor se povtoruva najmnogu?
+koj zbor se povtoruva najmnogu????
