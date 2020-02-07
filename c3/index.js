@@ -16,7 +16,7 @@ app.get('/greetings/:ime', (req, res) =>{ // ime e promenliva
     res.send(req.params.ime);
 });
 
-app.listen(8080);
+
 
 
 app.get('/calc/:func/:x/:y', (req, res) =>{ // ime e promenliva
@@ -64,3 +64,5 @@ app.post('/calc', (req, res) =>{
     }
     res.send('' + ress)
 })
+
+app.listen(8080);
