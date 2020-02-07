@@ -12,9 +12,9 @@ const read = ( file ) =>{
 }
 
 const counting = (data) =>{
-    let sentencesNo = data.split('.').length; // number of sentences - fix  this
-    let wordsNo = data.split(' ').length; // number of words
-    let charNo = data.length - data.split(' ').length;// number of characters
+    let sentencesNo = data.split(/[\.!?]/).length -1; // number of sentences - fix  this
+    let wordsNo = data.split(' ').length -1; // number of words
+    let charNo = data.length - data.split(' ').length -1;// number of characters
 
    let words = data.split(' '); // to split words into an array
     //counting length  of words
@@ -27,7 +27,7 @@ const counting = (data) =>{
    var maxCount = 0;
 
    for (let i=0;i<wordsNo;i++) {
-    let pWord = words[i].replace(/[^0-9a-zA-Z]+/g, ""); // regex to remove everything from a word except characters a-z, A-Z and 0-9
+    let pWord = words[i].replace(/[\.!?,]+/g, ""); // regex to remove everything from a word except characters a-z, A-Z and 0-9
     
     // logic for counting words length.. check above
         if (pWord.length > 7) {
@@ -41,7 +41,7 @@ const counting = (data) =>{
 
       // logic for finding the word with most occurrance //
       var el = pWord;
-      if(modeMap[el] == null)
+      if(modeMap[el] == undefined) // null - postoin so vrednost null / undefined - ne postoi
           modeMap[el] = 0;
       else
           modeMap[el]++;
@@ -61,7 +61,7 @@ ${wordsNo} words and
 ${charNo} characters.`);
 
 console.log(`
-${wordsBigger} of these words has length bigger then "7", 
+${wordsBigger} of these words has length greater then "7", 
 ${wordsSmaller} less then "7" and 
 ${wordsEven} are even with "7"`);
 
