@@ -9,16 +9,10 @@ app.use(bodyParser.urlencoded({ extended: false })); // reading body data from p
 
 app.get('/', handlers.index);
 app.get('/greetings', handlers.ime);
-
 app.get('/greetings/:ime', handlers.greetings);
-
-
-
-
 app.get('/calc/:func/:x/:y', handlers.calc1);
 
 app.post('/values', handlers.values);
-
 app.post('/calc', handlers.calc2);
 
 app.listen(8080);
