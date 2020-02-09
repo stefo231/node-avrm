@@ -20,10 +20,10 @@ fs.writeFile('message.txt', 'Hello Node.js ', (err) => {
 
 // to avoid callback hell we work with promise
 
-const write = ( file, content )=>{
+const write = (file, content) => {
     return new Promise((success, fail) => {
-        fs.writeFile(file, content, (err) =>{
-            if(err){
+        fs.writeFile(file, content, (err) => {
+            if (err) {
                 return fail(err);
             }
             return success();
@@ -31,10 +31,10 @@ const write = ( file, content )=>{
     });
 };
 
-const append = ( file, content )=>{
+const append = (file, content) => {
     return new Promise((success, fail) => {
-        fs.appendFile(file, content, (err) =>{
-            if(err){
+        fs.appendFile(file, content, (err) => {
+            if (err) {
                 return fail(err);
             }
             return success();
@@ -42,10 +42,10 @@ const append = ( file, content )=>{
     })
 }
 
-const read = ( file ) =>{
-    return new Promise(( success, fail) =>{
-        fs.readFile(file, 'utf8', (err, data) =>{
-            if(err){
+const read = (file) => {
+    return new Promise((success, fail) => {
+        fs.readFile(file, 'utf8', (err, data) => {
+            if (err) {
                 return fail(err);
             }
             return success(data);
@@ -59,10 +59,10 @@ write('file.txt', 'some content')
         //console.log('successfully wrote to file');
         return append('file.txt', 'SOME OTHER CONTENT')
     })
-    .then(() =>{
-     return read('file.txt')
+    .then(() => {
+        return read('file.txt')
     })
-    .then(data =>{
+    .then(data => {
         console.log('file.txt');
         console.log(data)
     })
@@ -71,9 +71,9 @@ write('file.txt', 'some content')
     })
 
 
-    let ime = 'stefan zdravkov';
-    let poz = `zdravo ${ime}`
+let ime = 'stefan zdravkov';
+let poz = `zdravo ${ime}`
 
 
-    console.log(poz.length);
-    console.log(poz.split(' '))
+console.log(poz.length);
+console.log(poz.split(' '))
