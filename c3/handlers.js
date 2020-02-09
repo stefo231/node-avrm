@@ -1,21 +1,21 @@
-const index = (req, res) =>{
+const index = (req, res) => {
     res.send('ok');
 }
 
-const ime = (req, res) =>{
+const ime = (req, res) => {
     res.send('pero');
 }
 
-const greetings = (req, res) =>{ // ime e promenliva
+const greetings = (req, res) => { // ime e promenliva
     res.send(req.params.ime);
 }
 
-const calc1 = (req, res) =>{ // ime e promenliva
+const calc1 = (req, res) => { // ime e promenliva
     let ress = 0;
-    switch(req.params.func){
+    switch (req.params.func) {
         case 'add':
             ress = Number(req.params.x) + Number(req.params.y)
-        break;
+            break;
         case 'sub':
             ress = Number(req.params.x) - Number(req.params.y)
             break;
@@ -31,16 +31,16 @@ const calc1 = (req, res) =>{ // ime e promenliva
     res.send('' + ress)
 }
 
-const values = (req, res) =>{
+const values = (req, res) => {
     res.send(`response: ${req.body.age}`)
 };
 
-const calc2 = (req, res) =>{
+const calc2 = (req, res) => {
     let ress = 0;
-    switch(req.body.func){
+    switch (req.body.func) {
         case 'add':
             ress = Number(req.body.x) + Number(req.body.y)
-        break;
+            break;
         case 'sub':
             ress = Number(req.body.x) - Number(req.body.y)
             break;
