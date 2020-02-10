@@ -42,17 +42,10 @@ const append = (file, content) => {
 };
 
 const postStudents = (req, res) => {
-    append(STUDENTS_FILE, ` ${req.body.students}`, 'utf8')
-        .then(data => {
-            //res.send(req.body.name)
-            res.redirect('/students')
-        })
-        .catch(err => {
-            console.log('an error has occured while append students in the file');
-            res.status(500).send('Could not append to file')
-            return
-        });
+    
 }
+
+//procitaj
 
 module.exports = {
     getStudents,
