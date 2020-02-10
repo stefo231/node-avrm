@@ -24,6 +24,13 @@ const append = (file, content) => {
     });
 };
 
+const mainOk = (req, res) => {
+    //res.send('ok')
+    let data = {
+        ime: 'pero'
+    };
+    res.render('main', data)
+}
 
 const getIminja = (req, res) => {
     read(IMINJA_FILE)
@@ -55,5 +62,6 @@ const postIminja = (req, res) => {
 
 module.exports = {
     getIminja,
-    postIminja
+    postIminja,
+    mainOk
 }

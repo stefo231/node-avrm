@@ -1,0 +1,38 @@
+[
+    {
+        "id": 3121321231,
+        "first_name": "John",
+        "last_name": "Smith",
+        "address": "str. Lombard 234",
+        "avg_grade": 8.3
+    },
+    {
+        "id": 23352344,
+        "first_name": "Sam",
+        "last_name": "Doe",
+        "address": "str. Blackhill 65",
+        "avg_grade": 9.3
+    },
+    {
+        "id": 23554343,
+        "first_name": "Pero",
+        "last_name": "Antic",
+        "address": "str. Malters 21.32",
+        "avg_grade": 8.6
+    },
+    {
+        "id": 65636435353,
+        "first_name": "Eve",
+        "last_name": "Jones",
+        "address": "str. Walters 21.32",
+        "avg_grade": 10.0
+    },
+    {
+        "id": 123455890,
+        "first_name": "John",
+        "last_name": "Smith",
+        "address": "str. Bombard 321",
+        "avg_grade": 7.6
+    }
+]
+
