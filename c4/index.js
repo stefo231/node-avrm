@@ -19,5 +19,8 @@ app.post('/iminja', iminja.postIminja)
 
 app.get('/students', students.getStudents)
 app.post('/students', students.postStudents)
+app.get('/student/:id', students.getStudent)
+app.put('/student/:id', students.putStudent)
+app.delete('/student/:id', students.deleteStudent)
 
 app.listen(8080);

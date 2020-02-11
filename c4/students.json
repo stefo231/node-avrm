@@ -25,7 +25,7 @@
         "first_name": "Eve",
         "last_name": "Jones",
         "address": "str. Walters 21.32",
-        "avg_grade": 10.0
+        "avg_grade": 10
     },
     {
         "id": 123455890,
@@ -33,6 +33,26 @@
         "last_name": "Smith",
         "address": "str. Bombard 321",
         "avg_grade": 7.6
+    },
+    {
+        "id": 1581362548420,
+        "first_name": "Patrick",
+        "last_name": "Holmes",
+        "address": "ddrre",
+        "avg_grade": 10
+    },
+    {
+        "id": 1581363488698,
+        "first_name": "Patrick",
+        "last_name": "Holmes",
+        "address": "ddrre",
+        "avg_grade": 231
+    },
+    {
+        "id": 1581377379813,
+        "first_name": "dragana",
+        "last_name": "zdravkova",
+        "address": "bulevaro",
+        "avg_grade": 10
     }
 ]
-

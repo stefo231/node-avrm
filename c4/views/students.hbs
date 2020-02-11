@@ -1,17 +1,21 @@
-<html>
-  <body>
+<html lang="en">
 
-  </body>
-</html>
-<form method="POST" action="/students">
-<input type="text", name="first_name", placeholder="first name" />
-<input type="text", name="last_name", placeholder="last name" />
-<input type="text", name="address", placeholder="address" />
-<input type="text", name="avg_grade", placeholder="avg grade" />
-<button>Add</button>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
 
-</form>
-  <table width: "100%" border:"1">
+<body>
+  <form method="POST" action="/students">
+    <input type="text" , name="first_name" , placeholder="first name" required="required" />
+    <input type="text" , name="last_name" , placeholder="last name" required="required" />
+    <input type="text" , name="address" , placeholder="address" required="required" />
+    <input type="number" , name="avg_grade" , placeholder="avg grade" required="required" />
+    <button type="submit" name="add">Add</button>
+  </form>
+  <br />
+  <hr /><br />
+  <table border="1" width="80%">
     <tr>
       <th>First Name</th>
       <th>Last Name</th>
@@ -24,8 +28,11 @@
       <td>{{this.last_name}}</td>
       <td>{{this.address}}</td>
       <td>{{this.avg_grade}}</td>
-      <td><button>Edit</button></td>
+      <td><button type="submit" name="edit">Edit</button></td>
     </tr>
     {{/each}}
   </table>
 
+</body>
+
+</html>
