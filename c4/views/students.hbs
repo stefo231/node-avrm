@@ -28,7 +28,9 @@
       <td>{{this.last_name}}</td>
       <td>{{this.address}}</td>
       <td>{{this.avg_grade}}</td>
+      <form method="GET" action="students/:id">
       <td><button type="submit" name="edit">Edit</button></td>
+      </form>
     </tr>
     {{/each}}
   </table>

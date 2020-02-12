@@ -1,8 +1,11 @@
 const express = require('express');
 const hbs = require('hbs'); // hbs must be required
 const bodyParser = require('body-parser');
+
 const iminja = require('./handlers/iminja')
 const students = require('./handlers/students')
+
+
 
 
 var app = express();
@@ -20,7 +23,7 @@ app.post('/iminja', iminja.postIminja)
 app.get('/students', students.getStudents)
 app.post('/students', students.postStudents)
 app.get('/student/:id', students.getStudent)
-app.put('/student/:id', students.putStudent)
-app.delete('/student/:id', students.deleteStudent)
+//app.put('/student/:id', students.putStudent)
+//app.delete('/student/:id', students.deleteStudent)
 
 app.listen(8080);

@@ -84,11 +84,7 @@ const getStudent = (req, res, next) => {
                     res.render('student', out.students[i])
                     console.log('success')
                 }
-                
             }
-            
-            //res.render('students', out.students[i]);
-            //console.log(out.students.length)
         })
         .catch(err => {
             console.log('Error reading file.');
