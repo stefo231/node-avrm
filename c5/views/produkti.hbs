@@ -12,11 +12,18 @@
   <input type="number" , name="parcinja" , placeholder="parcinja" , required="required" />
   <button type="submit" name="add">Add</button>
 </form>
+  <hr />
+  <form method="POST" action="/delete">
+  <input type="text" , name="_id" , placeholder="ID" , required="required" />
+  <button type="submit" name="delete">delete</button>
+</form>
+  
 
 <body>
 
   <table border="1" width="80%">
     <tr>
+      <th>ID</th>
       <th>Ime</th>
       <th>Proizvoditel</th>
       <th>Cena</th>
@@ -25,22 +32,12 @@
     </tr>
     {{#each produkti}}
     <tr _id="id_{{this._id}}">
+      <td>{{this._id}}</td>
       <td>{{this.ime}}</td>
       <td>{{this.proizvoditel}}</td>
       <td>{{this.cena}}</td>
       <td>{{this.tezina}}</td>
       <td>{{this.parcinja}}</td>
-      <td>
-        <form method="POST" action="/update">
-          <button type="submit" name="update">update</button>
-        </form>
-      </td>
-      <td>
-        <form method="POST" action="/delete">
-          <button type="button" name="delete">delete</button>
-        </form>
-      </td>
-
     </tr>
     {{/each}}
   </table>

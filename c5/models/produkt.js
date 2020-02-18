@@ -70,8 +70,8 @@ const removeItem = (id) => {
 }
 
 const deleter = (req, res) => {
-    var id = req.body.id;
-    removeItem(id.str)
+
+    removeItem(req.body._id)
     res.redirect('/')
 }
 
