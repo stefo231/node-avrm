@@ -56,15 +56,15 @@ const creator = (req, res) => {
         parcinja: req.body.parcinja
     }
     createNew(item)
-    .then(() => 
-    res.redirect('/')
-    )
-    .catch(err => {
-        console.log('Error has occured while creating new Item')
-        res.status(500).send('Could not create new item')
-        return
-    })
-    
+        .then(() =>
+            res.redirect('/')
+        )
+        .catch(err => {
+            console.log('Error has occured while creating new Item')
+            res.status(500).send('Could not create new item')
+            return
+        })
+
 }
 
 const removeItem = (id) => {
@@ -80,14 +80,14 @@ const removeItem = (id) => {
 const deleter = (req, res) => {
     let id = req.body._id
     removeItem(id)
-    .then(() => 
-    res.redirect('/')
-    )
-    .catch(err => {
-        console.log('Error has occured while creating new Item')
-        res.status(500).send('Could not create new item')
-        return
-    })
+        .then(() =>
+            res.redirect('/')
+        )
+        .catch(err => {
+            console.log('Error has occured while creating new Item')
+            res.status(500).send('Could not create new item')
+            return
+        })
 }
 
 const updateItem = (id, data) => {
@@ -101,23 +101,23 @@ const updateItem = (id, data) => {
     })
 }
 
-const updater = (res, req) => {
-    let id = req.body._id
-    let item = {
-        ime: req.body.ime,
-        proizvoditel: req.body.proizvoditel,
-        cena: req.body.cena,
-        tezina: req.body.tezina,
-        parcinja: req.body.parcinja
+const updater = (req, res) =>{
+    let id = req.body.idUp
+    let date = {
+        ime: req.body.imeUp,
+        proizvoditel: req.body.proizvoditelUp,
+        cena: Number(req.body.cenaUp),
+        tezina:  Number(req.body.tezinaUp),
+        parcinja: Number(req.body.parcinjaUp)
     }
-    updateItem(id, item)
-    .then(() => 
-    res.redirect('/')
-    )
-    .catch(err => {
-        console.log('Error has occured while updating the Item')
-        res.status(500).send('Could not updating the item')
-        return
+    return new Promise((success, fail)=>{
+        Produkt.updateOne({_id: id}, date, (err)=>{
+            if(err){
+                return fail(err);
+            }
+            return success();
+        })
+        res.redirect('/')
     })
 }
 
@@ -129,5 +129,6 @@ module.exports = {
     reader,
     creator,
     deleter,
-    updater
+    updater,
+    
 }

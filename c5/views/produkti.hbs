@@ -3,40 +3,43 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>C5</title>
 </head>
-<form method="POST" action="/insert">
-  <input type="text" , name="ime" , placeholder="ime" , required="required" />
-  <input type="text" , name="proizvoditel" , placeholder="proizvoditel" , required="required" />
-  <input type="number" , name="cena" , placeholder="cena" , required="required" />
-  <input type="number" , name="tezina" , placeholder="tezina" , required="required" />
-  <input type="number" , name="parcinja" , placeholder="parcinja" , required="required" />
-  <button type="submit" name="add">Add</button>
-</form>
-
-<hr />
-
-  <form method="POST" action="/update">
-  <input type="text" , name="_id" , placeholder="ID" , required="required" />
-  <input type="text" , name="ime" , placeholder="ime" , required="required" />
-  <input type="text" , name="proizvoditel" , placeholder="proizvoditel" , required="required" />
-  <input type="number" , name="cena" , placeholder="cena" , required="required" />
-  <input type="number" , name="tezina" , placeholder="tezina" , required="required" />
-  <input type="number" , name="parcinja" , placeholder="parcinja" , required="required" />
-  <button type="submit" name="update">update</button>
-</form>
-
-  <hr />
-  
-  <form method="POST" action="/delete">
-  <input type="text" , name="_id" , placeholder="ID" , required="required" />
-  <button type="submit" name="delete">delete</button>
-</form>
-  
 
 <body>
+  <form method="POST" action="/insert">
+    <input type="text" , name="ime" , placeholder="ime" , required="required" />
+    <input type="text" , name="proizvoditel" , placeholder="proizvoditel" , required="required" />
+    <input type="number" , name="cena" , placeholder="cena" , required="required" />
+    <input type="number" , name="tezina" , placeholder="tezina" , required="required" />
+    <input type="number" , name="parcinja" , placeholder="parcinja" , required="required" />
+    <button type="submit" name="add" style="background-color: rgb(112, 201, 112);">Insert</button>
+  </form>
+
+  <hr />
+
+  <form method="POST" action="/update">
+    <input type="text" name="idUp" placeholder="ID" required="required">
+    <input type="text" name="imeUp" placeholder="ime" required="required">
+    <input type="text" name="proizvoditelUp" placeholder="proizvoditel" required="required">
+    <input type="number" name="cenaUp" placeholder="cena" required="required">
+    <input type="number" name="tezinaUp" placeholder="tezina" required="required">
+    <input type="number" name="parcinjaUp" placeholder="parcinja" required="required">
+    <button type="submit" name="update" style="background-color: rgb(203, 218, 72);">Update</button>
+  </form>
+
+  <hr />
+
+  <form method="POST" action="/delete">
+    <input type="text" , name="_id" , placeholder="ID" , required="required" />
+    <button type="submit" name="delete" style="background-color: rgb(233, 61, 49);">Delete</button>
+  </form>
+
+
+
 
   <table border="1" width="80%">
-    <tr>
+    <tr >
       <th>ID</th>
       <th>Ime</th>
       <th>Proizvoditel</th>
