@@ -15,15 +15,13 @@ app.set('view engine', 'hbs');
 
 
 app.get('/', iminja.mainOk);
-
 app.get('/iminja', iminja.getIminja)
-
 app.post('/iminja', iminja.postIminja)
 
+
 app.get('/students', students.getStudents)
-app.post('/students', students.postStudents)
-app.get('/student/:id', students.getStudent)
-//app.put('/student/:id', students.putStudent)
-//app.delete('/student/:id', students.deleteStudent)
+app.post('/insert', students.postStudents)
+app.post('/update', students.updateStudent)
+app.post('/delete', students.deleteStudent)
 
 app.listen(8080);

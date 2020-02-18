@@ -1,40 +1,56 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
 
 <body>
-  <form method="POST" action="/students">
-    <input type="text" , name="first_name" , placeholder="first name" required="required" />
-    <input type="text" , name="last_name" , placeholder="last name" required="required" />
-    <input type="text" , name="address" , placeholder="address" required="required" />
-    <input type="number" , name="avg_grade" , placeholder="avg grade" required="required" />
-    <button type="submit" name="add">Add</button>
-  </form>
-  <br />
-  <hr /><br />
-  <table border="1" width="80%">
-    <tr>
-      <th>First Name</th>
-      <th>Last Name</th>
-      <th>Address</th>
-      <th>Avg. Grade</th>
-    </tr>
-    {{#each students}}
-    <tr id="id_{{this.id}}">
-      <td>{{this.first_name}}</td>
-      <td>{{this.last_name}}</td>
-      <td>{{this.address}}</td>
-      <td>{{this.avg_grade}}</td>
-      <form method="GET" action="students/:id">
-      <td><button type="submit" name="edit">Edit</button></td>
-      </form>
-    </tr>
-    {{/each}}
-  </table>
+    <form method="post" action="/students">
+        <input type="text" name="first_name" placeholder="First Name" required="required">
+        <input type="text" name="last_name" placeholder="Last Name" required="required">
+        <input type="text" name="address" placeholder="Address" required="required">
+        <input type="number" name="avg_grade" placeholder="Avg. Grade" required="required">
+        <button type="submit" name="insert" style="background-color: green;">Insert</button>
+    </form>
+    <br/><hr/><br/>
+    <form method="post" action="/update">
+        <input type="text" name="id" placeholder="Id of Object" required="required">
+        <input type="text" name="first_name_Update" placeholder="First Name" required="required">
+        <input type="text" name="last_name_Update" placeholder="Last Name" required="required">
+        <input type="text" name="address_Update" placeholder="Address" required="required">
+        <input type="number" name="avg_grade_Update" placeholder="Avg. Grade" required="required">
+        <button type="submit" name="update" style="background-color: yellow;">Update</button>
+    </form>
+    <br/><hr/><br/>
+    <form method="post" action="/delete">
+        <input type="text" name="id" placeholder="Id of Object" required="required">
+        <button type="submit" name="delete" style="background-color: red;">Delete</button>
+    </form>
+
+    <br/><hr/><br/>
+    <table border="1" width="80%">
+        <tbody>
+            <tr>
+                <th>User id</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Address</th>
+                <th>Avg. Grade</th>
+            </tr>
+            {{#each students}}
+            <tr id="id_{{this.id}}">
+                <td>{{this.id}}</td>
+                <td>{{this.first_name}}</td>
+                <td>{{this.last_name}}</td>
+                <td>{{this.address}}</td>
+                <td>{{this.avg_grade}}</td>
+            </tr>
+            {{/each}}
+
+        </tbody>
+    </table>
 
 </body>
-
-</html>

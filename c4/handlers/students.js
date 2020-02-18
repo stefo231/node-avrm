@@ -70,6 +70,7 @@ const postStudents = (req, res) => {
             return
         });
 }
+
 // to update /student/:id
 
 const getStudent = (req, res, next) => {
@@ -81,7 +82,7 @@ const getStudent = (req, res, next) => {
             for (i = 0; i < out.students.length; i++) {
                 if (out.students[i].id == req.params.id) {
                     console.log(out.students[i])
-                    res.render('student', out.students[i])
+                    res.render('students', out.students[i])
                     console.log('success')
                 }
             }
@@ -93,11 +94,71 @@ const getStudent = (req, res, next) => {
         });
 }
 
-const putStudent = (req, res) => {
+const updateStudent = (req, res) => {
 
+    var id = req.body.id;
+    var fname = req.body.first_name_Update;
+    var lname = req.body.last_name_Update;
+    var address = req.body.address_Update;
+    var avg_grade = req.body.avg_grade_Update;
+
+    fs.readFile(STUDENTS_FILE, 'utf8', (err, data) => {
+        if (err) {
+            console.log('Error reading file')
+            res.status(500).send('Could not read the file')
+            return;
+        }
+        data = JSON.parse(data)
+        let fileObj = data;
+
+        fileObj.find(curr => {
+            if (curr.id == id) {
+                curr.first_name = fname;
+                curr.last_name = lname;
+                curr.address = address;
+                curr.avg_grade = avg_grade;
+
+            }
+        })
+        data = JSON.stringify(fileObj);
+        fs.writeFile(STUDENTS_FILE, data, (err) => {
+            if (err) {
+                console.log('Error writing file')
+                res.status(500).send('Could not write the file')
+                return;
+            }
+            res.redirect('/students');
+        });
+    });
 }
+
 const deleteStudent = (req, res) => {
 
+    var id = req.body.id;
+
+    fs.readFile(STUDENTS_FILE, 'utf8', (err, data) => {
+        if (err) {
+            console.log('Error reading file')
+            res.status(500).send('Could not read the file')
+            return;
+        }
+        data = JSON.parse(data)
+        let fileObj = data;
+        var index = fileObj.findIndex(obj => obj.id == id);
+            if (index > -1) {
+                fileObj.splice(index, 1);
+            }
+     
+        data = JSON.stringify(fileObj);
+        fs.writeFile(STUDENTS_FILE, data, (err) => {
+            if (err) {
+                console.log('Error writing file')
+                res.status(500).send('Could not write the file')
+                return;
+            }
+            res.redirect('/students');
+        });
+    });
 }
 
 
@@ -106,6 +167,6 @@ module.exports = {
     getStudents,
     postStudents,
     getStudent,
-    putStudent,
+    updateStudent,
     deleteStudent
 }
