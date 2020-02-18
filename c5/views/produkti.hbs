@@ -1,0 +1,50 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<form method="POST" action="/insert">
+  <input type="text" , name="ime" , placeholder="ime" , required="required" />
+  <input type="text" , name="proizvoditel" , placeholder="proizvoditel" , required="required" />
+  <input type="number" , name="cena" , placeholder="cena" , required="required" />
+  <input type="number" , name="tezina" , placeholder="tezina" , required="required" />
+  <input type="number" , name="parcinja" , placeholder="parcinja" , required="required" />
+  <button type="submit" name="add">Add</button>
+</form>
+
+<body>
+
+  <table border="1" width="80%">
+    <tr>
+      <th>Ime</th>
+      <th>Proizvoditel</th>
+      <th>Cena</th>
+      <th>Tezina</th>
+      <th>Parcinja</th>
+    </tr>
+    {{#each produkti}}
+    <tr _id="id_{{this._id}}">
+      <td>{{this.ime}}</td>
+      <td>{{this.proizvoditel}}</td>
+      <td>{{this.cena}}</td>
+      <td>{{this.tezina}}</td>
+      <td>{{this.parcinja}}</td>
+      <td>
+        <form method="POST" action="/update">
+          <button type="submit" name="update">update</button>
+        </form>
+      </td>
+      <td>
+        <form method="POST" action="/delete">
+          <button type="button" name="delete">delete</button>
+        </form>
+      </td>
+
+    </tr>
+    {{/each}}
+  </table>
+
+</body>
+
+</html>

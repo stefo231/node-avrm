@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const cstring = 'mongodb+srv://Stefan:alfa123$@cluster0-hyvxh.gcp.mongodb.net/prodavnica?retryWrites=true&w=majority'
 
 const initDB = () => {
-    mongoose.connect(cstring, { useNewUrlParser: true, useUnifiedTopology: true  }, (err) => {
+    mongoose.connect(cstring, { useNewUrlParser: true, useUnifiedTopology: true }, (err) => {
         if (err) {
             console.log('Could not connect to database')
             return

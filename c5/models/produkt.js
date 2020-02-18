@@ -1,16 +1,15 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-const Produkt = mongoose.model(
-    'produkti',
-    {
-        ime: String,
-        proizvoditel: String,
-        cena: Number,
-        tezina: Number,
-        parcinja: Number
-    },
-    'produkti'
-)
+var productSchema = new Schema({
+    ime: { type: String, required: true },
+    proizvoditel: { type: String, required: true },
+    cena: { type: Number, required: true },
+    tezina: { type: Number, required: true },
+    parcinja: { type: Number, required: true },
+}, { collection: 'produkti' })
+
+const Produkt = mongoose.model('produkti', productSchema)
 
 const readAll = () => {
     return new Promise((success, fail) => {
@@ -19,11 +18,21 @@ const readAll = () => {
                 return fail(err);
             }
             return success(data);
-            //console.log(data)
         })
     })
 }
 
+const reader = (req, res) => {
+    readAll()
+        .then(data => {
+            res.render('produkti', { produkti: data })
+        })
+        .catch(err => {
+            console.log('Error has occured while reading from DB')
+            res.status(500).send('Could not read from DB')
+            return
+        })
+}
 
 const createNew = (data) => {
     return new Promise((success, fail) => {
@@ -36,12 +45,23 @@ const createNew = (data) => {
             return success();
         });
     })
+}
 
+const creator = (req, res) => {
+    var item = {
+        ime: req.body.ime,
+        proizvoditel: req.body.proizvoditel,
+        cena: req.body.cena,
+        tezina: req.body.tezina,
+        parcinja: req.body.parcinja
+    }
+    createNew(item)
+    res.redirect('/')
 }
 
 const removeItem = (id) => {
     return new Promise((success, fail) =>
-        Produkt.deleteOne({_id: id}, (err) => {
+        Produkt.deleteOne({ _id: id }, (err) => {
             if (err) {
                 return fail(err);
             }
@@ -49,9 +69,15 @@ const removeItem = (id) => {
         }))
 }
 
+const deleter = (req, res) => {
+    var id = req.body.id;
+    removeItem(id.str)
+    res.redirect('/')
+}
+
 const updateItem = (id, data) => {
     return new Promise((success, fail) => {
-        Produkt.update({ _id: id}, data, (err) => {
+        Produkt.updateOne({ _id: id }, data, (err) => {
             if (err) {
                 return fail(err)
             }
@@ -60,51 +86,30 @@ const updateItem = (id, data) => {
     })
 }
 
-module.exports = { 
+const updater = (res, req) => {
+    var id = req.param.id
+
+    Produkt.findById(id, (err, doc) => {
+        if (err) {
+            console.log('error, no entry found')
+        }
+        doc.ime = req.body.ime,
+            doc.proizvoditel = req.body.proizvoditel,
+            doc.cena = req.body.cena,
+            doc.tezina = req.body.tezina,
+            doc.parcinja = req.body.parcinja
+        doc.save();
+    })
+    res.redirect('/')
+}
+
+module.exports = {
     readAll,
     createNew,
     removeItem,
-    updateItem
+    updateItem,
+    reader,
+    creator,
+    deleter,
+    updater
 }
-
-/*
-// add to database
-let p = new Produkt({
-    "ime": "Milka so Oreo",
-    "proizvoditel": "Mondelez",
-    "cena": 30.0,
-    "tezina": 300.0,
-    "parcinja": 1
-})
-
-p.save((err) => {
-    if (err) {
-        console.log('Could not save to database')
-        return
-    }
-});
-
-// read from database
-Produkt.find({}, (err, data) => {
-    if (err) {
-        console.log('Could not read from database')
-        return
-    }
-    console.log(data)
-})
-
-//delete from database
-Produkt.deleteOne({ _id: "5e42b3ba355e79c92e8231e1" }, (err) => {
-    if (err) {
-        console.log('Could not delete from database')
-        return
-    }
-})
-
-//update in database
-Produkt.update({ ime: 'smoki' }, { cena: 15.0 }, (err) => {
-    if (err) {
-        console.log('Could not update in database')
-        return
-    }
-})*/
