@@ -12,7 +12,21 @@
   <input type="number" , name="parcinja" , placeholder="parcinja" , required="required" />
   <button type="submit" name="add">Add</button>
 </form>
+
+<hr />
+
+  <form method="POST" action="/update">
+  <input type="text" , name="_id" , placeholder="ID" , required="required" />
+  <input type="text" , name="ime" , placeholder="ime" , required="required" />
+  <input type="text" , name="proizvoditel" , placeholder="proizvoditel" , required="required" />
+  <input type="number" , name="cena" , placeholder="cena" , required="required" />
+  <input type="number" , name="tezina" , placeholder="tezina" , required="required" />
+  <input type="number" , name="parcinja" , placeholder="parcinja" , required="required" />
+  <button type="submit" name="update">update</button>
+</form>
+
   <hr />
+  
   <form method="POST" action="/delete">
   <input type="text" , name="_id" , placeholder="ID" , required="required" />
   <button type="submit" name="delete">delete</button>

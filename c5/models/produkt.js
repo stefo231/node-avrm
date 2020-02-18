@@ -56,7 +56,15 @@ const creator = (req, res) => {
         parcinja: req.body.parcinja
     }
     createNew(item)
+    .then(() => 
     res.redirect('/')
+    )
+    .catch(err => {
+        console.log('Error has occured while creating new Item')
+        res.status(500).send('Could not create new item')
+        return
+    })
+    
 }
 
 const removeItem = (id) => {
@@ -70,9 +78,16 @@ const removeItem = (id) => {
 }
 
 const deleter = (req, res) => {
-
-    removeItem(req.body._id)
+    let id = req.body._id
+    removeItem(id)
+    .then(() => 
     res.redirect('/')
+    )
+    .catch(err => {
+        console.log('Error has occured while creating new Item')
+        res.status(500).send('Could not create new item')
+        return
+    })
 }
 
 const updateItem = (id, data) => {
@@ -87,20 +102,23 @@ const updateItem = (id, data) => {
 }
 
 const updater = (res, req) => {
-    var id = req.param.id
-
-    Produkt.findById(id, (err, doc) => {
-        if (err) {
-            console.log('error, no entry found')
-        }
-        doc.ime = req.body.ime,
-            doc.proizvoditel = req.body.proizvoditel,
-            doc.cena = req.body.cena,
-            doc.tezina = req.body.tezina,
-            doc.parcinja = req.body.parcinja
-        doc.save();
-    })
+    let id = req.body._id
+    let item = {
+        ime: req.body.ime,
+        proizvoditel: req.body.proizvoditel,
+        cena: req.body.cena,
+        tezina: req.body.tezina,
+        parcinja: req.body.parcinja
+    }
+    updateItem(id, item)
+    .then(() => 
     res.redirect('/')
+    )
+    .catch(err => {
+        console.log('Error has occured while updating the Item')
+        res.status(500).send('Could not updating the item')
+        return
+    })
 }
 
 module.exports = {
