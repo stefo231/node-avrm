@@ -110,9 +110,9 @@ const updater = (req, res) =>{
         tezina:  Number(req.body.tezinaUp),
         parcinja: Number(req.body.parcinjaUp)
     }
-    updateItem(id,data)
-    res.redirect('/')
-    /*return new Promise((success, fail)=>{
+    //updateItem(id,data)
+    //res.redirect('/')
+    return new Promise((success, fail)=>{
         Produkt.updateOne({_id: id}, data, (err)=>{
             if(err){
                 return fail(err);
@@ -120,7 +120,7 @@ const updater = (req, res) =>{
             return success();
         })
         res.redirect('/')
-    })*/
+    })
 }
 
 module.exports = {
