@@ -24,7 +24,7 @@ const readAll = () => {
 const reader = (req, res) => {
     readAll()
         .then(data => {
-            res.render('produkti', { produkti: data })
+            res.render('login', { login: data })
         })
         .catch(err => {
             console.log('Error has occured while reading from DB')
@@ -35,7 +35,7 @@ const reader = (req, res) => {
 
 const createNew = (data) => {
     return new Promise((success, fail) => {
-        let u = new Produkt(data)
+        let u = new User(data)
 
         u.save((err) => {
             if (err) {
@@ -67,7 +67,7 @@ const creator = (req, res) => {
 
 const removeItem = (id) => {
     return new Promise((success, fail) =>
-    User.deleteOne({ _id: id }, (err) => {
+        User.deleteOne({ _id: id }, (err) => {
             if (err) {
                 return fail(err);
             }
@@ -99,24 +99,35 @@ const updateItem = (id, data) => {
     })
 }
 
-const updater = (req, res) =>{
+const updater = (req, res) => {
     let id = req.body.idUp
     let data = {
         first_name: req.body.first_nameUp,
         last_name: req.body.last_nameUp,
         email: req.body.emailUp,
-        password:  req.body.passwordUp,
+        password: req.body.passwordUp,
     }
     //updateItem(id,data)
     //res.redirect('/')
-    return new Promise((success, fail)=>{
-        User.updateOne({_id: id}, data, (err)=>{
-            if(err){
+    return new Promise((success, fail) => {
+        User.updateOne({ _id: id }, data, (err) => {
+            if (err) {
                 return fail(err);
             }
             return success();
         })
         res.redirect('/')
+    })
+}
+
+const getByEmail = (email) => {
+    return new Promise((success, fail) => {
+        User.findOne({ email: email }, (err, data) => {
+            if (err) {
+                return fail(err)
+            }
+            return success(data)
+        })
     })
 }
 
@@ -129,5 +140,6 @@ module.exports = {
     creator,
     deleter,
     updater,
-    
+    getByEmail
+
 }
