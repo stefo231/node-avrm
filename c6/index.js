@@ -2,7 +2,7 @@ const express = require('express')
 const hbs = require('hbs')
 const bodyParser = require('body-parser')
 
-const db = require('./bootstrap/db');
+const db = require('./mongodb/db');
 const users = require('./handlers/users');
 const auth = require('./handlers/auth');
 
