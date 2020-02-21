@@ -20,7 +20,7 @@ const readAll = () => {
         })
     })
 }
-
+/*
 const reader = (req, res) => {
     readAll()
         .then(data => {
@@ -31,7 +31,7 @@ const reader = (req, res) => {
             res.status(500).send('Could not read from DB')
             return
         })
-}
+}*/
 
 const createNew = (data) => {
     return new Promise((success, fail) => {
@@ -45,7 +45,7 @@ const createNew = (data) => {
         });
     })
 }
-
+/*
 const creator = (req, res) => {
     var item = {
         first_name: req.body.first_name,
@@ -63,7 +63,7 @@ const creator = (req, res) => {
             return
         })
 
-}
+}*/
 
 const removeItem = (id) => {
     return new Promise((success, fail) =>
@@ -74,7 +74,7 @@ const removeItem = (id) => {
             return success();
         }))
 }
-
+/*
 const deleter = (req, res) => {
     let id = req.body._id
     removeItem(id)
@@ -86,7 +86,7 @@ const deleter = (req, res) => {
             res.status(500).send('Could not create new item')
             return
         })
-}
+}*/
 
 const updateItem = (id, data) => {
     return new Promise((success, fail) => {
@@ -98,7 +98,7 @@ const updateItem = (id, data) => {
         })
     })
 }
-
+/*
 const updater = (req, res) => {
     let id = req.body.idUp
     let data = {
@@ -118,7 +118,7 @@ const updater = (req, res) => {
         })
         res.redirect('/')
     })
-}
+}*/
 
 const getByEmail = (email) => {
     return new Promise((success, fail) => {
@@ -136,10 +136,10 @@ module.exports = {
     createNew,
     removeItem,
     updateItem,
-    reader,
-    creator,
-    deleter,
-    updater,
+    //reader,
+    //creator,
+    //deleter,
+    //updater,
     getByEmail
 
 }
