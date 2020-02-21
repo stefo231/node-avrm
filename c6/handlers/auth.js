@@ -1,5 +1,8 @@
 var bcrypt = require('bcryptjs')
 var users = require('../models/users')
+var jwt = require('jsonwebtoken');
+
+const tokenKey = 'pwd123!'
 
 const viewLogin = (req, res) => {
     res.render('login')
@@ -8,10 +11,14 @@ const viewLogin = (req, res) => {
 const apiLogin = (req, res) => {
     if (req.body.email !== undefined && req.body.email.length > 0 &&
         req.body.password !== undefined && req.body.password.length > 0) {
-            users.getByEmail(req.body.email)
+        users.getByEmail(req.body.email)
             .then(data => {
                 console.log(data.password)
-                if(bcrypt.compareSync(req.body.password, data.password)){
+                if (bcrypt.compareSync(req.body.password, data.password)) {
+                    // token creation
+                    let token = jwt.sign({ email: data.email }, tokenKey);
+                    res.cookie('jwt', token)
+
                     res.redirect('/dashboard')
                 } else {
                     res.redirect('/?err=1')
@@ -70,5 +77,6 @@ module.exports = {
     viewLogin,
     apiLogin,
     viewRegister,
-    apiRegister
+    apiRegister,
+    tokenKey
 }
