@@ -12,7 +12,7 @@ const blogposts = require('./handlers/blogposts'); // create this file
 db.initDB();
 let app = express();
 
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static('public'));
 
@@ -21,10 +21,10 @@ app.use((req, res, next) => {
         '/',
         '/register'
     ];
-    if(!whitelist.includes(req.path)){
-        if(req.cookies.jwt){
+    if (!whitelist.includes(req.path)) {
+        if (req.cookies.jwt) {
             jwt.verify(req.cookies.jwt, auth.tokenKey, (err, payload) => {
-                if(err){
+                if (err) {
                     return res.status(401).send('Unauthorized');
                 }
                 return next();
@@ -33,6 +33,7 @@ app.use((req, res, next) => {
             return res.status(401).send('Unauthorized');
         }
     } else {
+
         return next();
     }
 });
@@ -50,6 +51,7 @@ app.post('/register', auth.apiRegister);
 app.get('/dashboard', dashboard.viewDashboard);
 
 // from here to the end 
+//users 
 app.get('/users/new', users.viewNewUser) //done
 app.post('/users/new', users.apiNewUser) //done
 
@@ -58,14 +60,16 @@ app.post('/users/edit/:id', users.apiEditUser) //done
 
 app.get('/users/delete/:id', users.apiDeleteUser) //done
 
-//app.get('/blogposts/new', blogposts.viewNewBlogpost)
-//app.post('/blogposts/new', blogposts.apiNewBlogpost)
-//app.get('/blogposts/edit/:id', blogposts.viewEditBlogpost)
-//app.post('/blogposts/edit/:id', blogposts.apiEditBlogpost)
-//app.get('/blogposts/delete/:id', blogposts.apiDeleteBlogpost)
+//blogposts
+app.get('/blogposts', blogposts.viewBlogposts) //done
+app.get('/blogposts/new', blogposts.viewNewBlogpost) //done
+app.post('/blogposts/new', blogposts.apiNewBlogpost) //done
+app.get('/blogposts/edit/:id', blogposts.viewEditBlogpost)
+app.post('/blogposts/edit/:id', blogposts.apiEditBlogpost)
+app.get('/blogposts/delete/:id', blogposts.apiDeleteBlogpost)
 
 app.listen(8080, (err) => {
-    if(err){
+    if (err) {
         console.error(err);
         return;
     }

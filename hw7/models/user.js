@@ -35,8 +35,8 @@ const readOne = (id) =>{
 
 const createNew = (data) => {
     return new Promise((success, fail) => {
-        let p = new User(data);
-        p.save((err) => {
+        let user = new User(data);
+        user.save((err) => {
             if(err){
                 return fail(err);
             }

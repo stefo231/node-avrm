@@ -17,6 +17,8 @@ const apiLogin = (req, res) => {
                 if(bcrypt.compareSync(req.body.password, data.password)) {
                     let token = jwt.sign({ email: data.email }, tokenKey);
                     res.cookie('jwt', token);
+                    //let decoded = jwt.verify(token, tokenKey)
+                    //console.log(decoded)
                     res.redirect('/dashboard');
                 } else {
                     res.redirect('/?err=1')
