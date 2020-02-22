@@ -50,13 +50,13 @@ app.post('/register', auth.apiRegister);
 app.get('/dashboard', dashboard.viewDashboard);
 
 // from here to the end 
-app.get('/users/new', users.viewNewUser)
-app.post('/users/new', users.apiNewUser)
+app.get('/users/new', users.viewNewUser) //done
+app.post('/users/new', users.apiNewUser) //done
 
-app.get('/users/edit/:id', users.viewEditUser)
-app.post('/users/edit/:id', users.apiEditUser)
+app.get('/users/edit/:id', users.viewEditUser) //done
+app.post('/users/edit/:id', users.apiEditUser) //done
 
-app.get('/users/delete/:id', users.apiDeleteUser)
+app.get('/users/delete/:id', users.apiDeleteUser) //done
 
 //app.get('/blogposts/new', blogposts.viewNewBlogpost)
 //app.post('/blogposts/new', blogposts.apiNewBlogpost)

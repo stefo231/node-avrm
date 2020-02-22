@@ -1,15 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="/styles/new_user.css" />
+    <title>User edit</title>
 </head>
+
 <body>
-    The user id: {{user_id}}
-    <form method="post">
-        <input type="text">
-        <input type="hidden" name="id" value="{{user_id}}"/>
-    </form>
+    <header>
+        <div>
+            <h2>User edit</h2>
+            <a href="/logout">Log out</a>
+        </div>
+    </header>
+    <div class="main-container">
+        <div class="form">
+
+ The user id: {{user_id}} 
+            <form method="post" action="/users/edit/{{user_id}}">
+                <input type="hidden" name="id" value="{{user_id}}" />
+                
+                <label>
+                    <span>First Name</span>
+                    <input type="text" name="first_name" value="{{users.first_name}}"required />
+                </label>
+                <label>
+                    <span>Last Name</span>
+                    <input type="text" name="last_name" value="{{users.last_name}}"required />
+                </label>
+                <label>
+                    <span>Email</span>
+                    <input type="email" name="email" value="{{users.email}}"required />
+                </label>
+                
+                <button type="submit">update</button>
+                <a class="reglink" href="/dashboard">Back to Dashboard</a>
+            </form>
+        </div>
+    </div>
 </body>
+
 </html>
