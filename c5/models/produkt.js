@@ -101,20 +101,20 @@ const updateItem = (id, data) => {
     })
 }
 
-const updater = (req, res) =>{
+const updater = (req, res) => {
     let id = req.body.idUp
     let data = {
         ime: req.body.imeUp,
         proizvoditel: req.body.proizvoditelUp,
         cena: Number(req.body.cenaUp),
-        tezina:  Number(req.body.tezinaUp),
+        tezina: Number(req.body.tezinaUp),
         parcinja: Number(req.body.parcinjaUp)
     }
     //updateItem(id,data)
     //res.redirect('/')
-    return new Promise((success, fail)=>{
-        Produkt.updateOne({_id: id}, data, (err)=>{
-            if(err){
+    return new Promise((success, fail) => {
+        Produkt.updateOne({ _id: id }, data, (err) => {
+            if (err) {
                 return fail(err);
             }
             return success();
@@ -132,5 +132,5 @@ module.exports = {
     creator,
     deleter,
     updater,
-    
+
 }
