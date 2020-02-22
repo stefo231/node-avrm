@@ -52,15 +52,17 @@ app.get('/dashboard', dashboard.viewDashboard);
 // from here to the end 
 app.get('/users/new', users.viewNewUser)
 app.post('/users/new', users.apiNewUser)
+
 app.get('/users/edit/:id', users.viewEditUser)
 app.post('/users/edit/:id', users.apiEditUser)
+
 app.get('/users/delete/:id', users.apiDeleteUser)
 
-app.get('/blogposts/new', blogposts.viewNewBlogpost)
-app.post('/blogposts/new', blogposts.apiNewBlogpost)
-app.get('/blogposts/edit/:id', blogposts.viewEditBlogpost)
-app.post('/blogposts/edit/:id', blogposts.apiEditBlogpost)
-app.get('/blogposts/delete/:id', blogposts.apiDeleteBlogpost)
+//app.get('/blogposts/new', blogposts.viewNewBlogpost)
+//app.post('/blogposts/new', blogposts.apiNewBlogpost)
+//app.get('/blogposts/edit/:id', blogposts.viewEditBlogpost)
+//app.post('/blogposts/edit/:id', blogposts.apiEditBlogpost)
+//app.get('/blogposts/delete/:id', blogposts.apiDeleteBlogpost)
 
 app.listen(8080, (err) => {
     if(err){
