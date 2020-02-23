@@ -32,6 +32,11 @@ const apiLogin = (req, res) => {
     }
 }
 
+const apiLogout = (req, res) => {
+    res.clearCookie('jwt')
+    res.redirect('/')
+}
+
 const viewRegister = (req, res) => {
     res.render('register');
 }
@@ -72,5 +77,6 @@ module.exports = {
     apiLogin,
     viewRegister,
     apiRegister,
-    tokenKey
+    tokenKey,
+    apiLogout
 };

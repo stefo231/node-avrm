@@ -86,4 +86,36 @@ header {
         color: #fff;
         font-weight: bold;
     }
+
+    table a.old1 {
+        text-align: center;
+        padding: 5px;
+        text-decoration: none;
+        background-color: none;
+        color: #b8b803;
+        font-weight: bold;
+        border-radius: 10px;
+    }
+
+    table a.old2 {
+        
+        text-align: center;
+        padding: 5px;
+        text-decoration: none;
+        background-color: none;
+        color: #b82703;
+        font-weight: bold;
+        border-radius: 10px;
+    }
+
+    table a.old1:hover {
+        color: #fff;
+        background-color: #b8b803;
+    }
+    table a.old2:hover {
+        color: #fff;
+        background-color: #b82703;
+    }
+    
+    
     

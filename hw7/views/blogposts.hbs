@@ -16,7 +16,7 @@
             <a href="/logout">Log out</a>
         </div>
     </header>
-    <a href="/blogposts/new">Create new</a>
+    <a class="new" href="/blogposts/new">Create new</a>
     <div class="main-container">
         {{#each blogposts}}
         <div id="uid_{{this._id}}" class="card">
@@ -26,9 +26,9 @@
             <div class="blog-content">
                 {{this.content}}
             </div>
-            <div>
-                <a href="/blogposts/edit/{{this.id}}">edit</a>
-                <a href="/blogposts/delete/{{this.id}}">delete</a>
+            <div class="old">
+                <a class="old1" href="/blogposts/edit/{{this.id}}">edit</a>
+                <a class="old2" href="/blogposts/delete/{{this.id}}">delete</a>
             </div>
         </div>
         {{/each}}

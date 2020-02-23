@@ -40,11 +40,34 @@ const apiNewBlogpost = (req, res) => {
 }
 
 const viewEditBlogpost = (req, res) => {
-
+    let blog_id = req.params.id;
+    blogposts.readOne(blog_id)
+    .then(data => {
+        console.log(data)
+        res.render('editblog', {blog_id:blog_id, blogs: data});
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).send('internal server error');
+    });
 }
 
 const apiEditBlogpost = (req, res) => {
-
+    let id = req.body.id;
+    let data = {
+        content: req.body.content
+    }
+    console.log(id)
+    console.log(data)
+    blogposts.update(id,data)
+    .then(()=>{
+        console.log('Successfully uptaded the blog post')
+        res.redirect('/blogposts')
+    })
+    .catch(err=> {
+        console.log('Error has occured while updating the post')
+        res.status(500).send('Could not update the post')
+    })
 }
 
 const apiDeleteBlogpost = (req, res) => {

@@ -71,7 +71,7 @@ const apiEditUser = (req, res) => {
         .catch(err => {
             console.log('Error has occured while updating the user')
             res.status(500).send('Could not update the user')
-            return
+            //return
         })
 }
 

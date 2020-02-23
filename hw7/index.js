@@ -44,6 +44,7 @@ app.set('view engine', 'hbs');
 // routes
 app.get('/', auth.viewLogin);
 app.post('/', auth.apiLogin);
+app.get('/logout', auth.apiLogout);
 
 app.get('/register', auth.viewRegister);
 app.post('/register', auth.apiRegister);
@@ -64,9 +65,9 @@ app.get('/users/delete/:id', users.apiDeleteUser) //done
 app.get('/blogposts', blogposts.viewBlogposts) //done
 app.get('/blogposts/new', blogposts.viewNewBlogpost) //done
 app.post('/blogposts/new', blogposts.apiNewBlogpost) //done
-app.get('/blogposts/edit/:id', blogposts.viewEditBlogpost)
-app.post('/blogposts/edit/:id', blogposts.apiEditBlogpost)
-app.get('/blogposts/delete/:id', blogposts.apiDeleteBlogpost)
+app.get('/blogposts/edit/:id', blogposts.viewEditBlogpost) //done
+app.post('/blogposts/edit/:id', blogposts.apiEditBlogpost) //done
+app.get('/blogposts/delete/:id', blogposts.apiDeleteBlogpost) //done
 
 app.listen(8080, (err) => {
     if (err) {
