@@ -6,6 +6,19 @@
     <title>Document</title>
   </head>
   <body>
-    <h2>Hello</h2>
+    <h2 id="hi">Hello</h2>
+    <input type="text" id="boja" />
+    <button
+      type="button"
+      onclick="getElement(document.getElementById('boja').value, 2)"
+    >
+      Get Element
+    </button>
   </body>
+  <script>
+    function getElement(color, number) {
+      document.getElementById("hi").style.backgroundColor = color;
+      console.log(color, number);
+    }
+  </script>
 </html>
