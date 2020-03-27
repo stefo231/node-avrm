@@ -17,9 +17,10 @@ export default class App extends Component {
   // handlePasswordChange = event => {
   //   this.setState({ password: event.target.value });
   // };
-  componentDidMount() {
-    console.log(`Component Did Mount`);
-  }
+
+  // componentDidMount() {
+  //   console.log(`Component Did Mount`);
+  // }
 
   handleInputChange = event => {
     this.setState({
@@ -32,7 +33,7 @@ export default class App extends Component {
   };
 
   render() {
-    console.log(`render called`);
+    console.log(this.state.username);
     return (
       <div>
         <h3>{this.state.username}</h3>
