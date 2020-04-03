@@ -4,8 +4,7 @@ import Popup from "./Popup";
 export default function Gallery(props) {
   return (
     <div id="gallery">
-      <h2>Gallery</h2>
-      {props.photoList.slice(0, 50).map(photo => {
+      {props.photoList.slice(0, 50).map((photo) => {
         return (
           <div
             onClick={() => {
