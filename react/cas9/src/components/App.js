@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Switch, Route, Link } from "react-router-dom";
 import Hello from "./Hello";
 import Cake from "./Cake";
+import Comments from "./Comments";
+import Comment from "./Comment";
 
 export default class App extends Component {
   render() {
@@ -19,11 +21,16 @@ export default class App extends Component {
             <li>
               <Link to="/cake">Cake</Link>
             </li>
+            <li>
+              <Link to="/comments">Comments</Link>
+            </li>
           </ul>
         </nav>
         <Switch>
           <Route path="/hello" component={Hello} />
           <Route path="/cake" component={Cake} />
+          <Route exact path="/comments" component={Comments} />
+          <Route path="/comments/:commentId" component={Comment} />
         </Switch>
       </div>
     );
